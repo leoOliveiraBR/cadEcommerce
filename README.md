@@ -10,7 +10,8 @@
    - [Autores](#autores)
 
 # 💾 Conexão de Banco de Dados
-![image info](img/tabela.png)
+<img src="img/tabela.png" width="50%">
+
 
 # ✅ Descrição 
 Este código foi desenvolvido para demonstrar a configuração e utilização de uma conexão de banco de dados MySQL utilizando PHP. Ele faz parte do projeto CadeCommerce.
