@@ -10,7 +10,7 @@
    - [Autores](#autores)
 
 # 💾 Conexão de Banco de Dados
-<img src="img/tabela.png" width="50%">
+<img src="img/tabela.png" width="40%">
 
 
 # ✅ Descrição 
