@@ -1,4 +1,4 @@
-# 🚀 Sejam todos bem-vindos ao meu repositório CadeCommerce
+# 🚀 Sejam todos bem-vindos ao meu repositório CadCommerce
 
 ## Índice
    - [Conexão de Banco de Dados](#conex%C3%A3o-de-banco-de-dados)
@@ -14,7 +14,7 @@
 
 
 # ✅ Descrição 
-Este código foi desenvolvido para demonstrar a configuração e utilização de uma conexão de banco de dados MySQL utilizando PHP. Ele faz parte do projeto CadeCommerce.
+Este código foi desenvolvido para demonstrar a configuração e utilização de uma conexão de banco de dados MySQL utilizando PHP. Ele faz parte do projeto CadCommerce.
 
 # 📃 Introdução
 
