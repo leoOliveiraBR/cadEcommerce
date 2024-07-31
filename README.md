@@ -141,34 +141,44 @@ if ($mysqli->connect_error) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags essenciais para a configuração da página -->
-    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Define a compatibilidade com o Internet Explorer -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a viewport para melhor renderização em dispositivos móveis -->
-
-    <!-- Título da página que aparece na aba do navegador -->
+    // Define o conjunto de caracteres utilizado no documento
+    <meta charset="UTF-8">
+    
+    // Define a compatibilidade com o Internet Explorer e o modo de renderização
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    // Define a viewport para garantir a responsividade em dispositivos móveis
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    // Define o título da página exibido na aba do navegador
     <title>Cadastro de marca</title>
-
-    <!-- Link para o arquivo CSS externo para estilização da página -->
+    
+    // Vincula o arquivo de estilo CSS para a formatação da página
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Cabeçalho da página -->
+    // Cabeçalho da página
     <header>
         <div>
-            <h1>Cadastro de marca</h1> <!-- Título principal da página -->
-            <a href="index.php" target="_self">Voltar</a> <!-- Link para retornar à página inicial -->
+            // Título principal da página
+            <h1>Cadastro de marca</h1>
+            
+            // Link para retornar à página inicial
+            <a href="index.php" target="_self">Voltar</a>
         </div>
     </header>
     
-    <!-- Seção principal da página destinada ao cadastro de marca -->
+    // Seção principal da página para o formulário de cadastro
     <section id="produtos">
-        <!-- Formulário para inserir uma nova marca -->
+        // Formulário para inserir uma nova marca
         <form action="insere-marca.php" method="post">
-            <!-- Campo de entrada para a descrição da marca -->
+            // Rótulo para o campo de descrição
             <label for="">Descrição: </label>
+            
+            // Campo de entrada para a descrição da marca
             <input type="text" name="descricao">
-            <!-- Botão para enviar o formulário -->
+            
+            // Botão para submeter o formulário
             <input type="submit" value="Cadastrar">
         </form>
     </section>
@@ -179,38 +189,47 @@ if ($mysqli->connect_error) {
 ## Configuração de categoria
 ### `categoria.php`
 ```php
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags essenciais para a configuração da página -->
-    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Define a compatibilidade com o Internet Explorer -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a viewport para melhor renderização em dispositivos móveis -->
-
-    <!-- Título da página que aparece na aba do navegador -->
+    // Define o conjunto de caracteres utilizado no documento
+    <meta charset="UTF-8">
+    
+    // Define a compatibilidade com o Internet Explorer e o modo de renderização
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    // Define a viewport para garantir a responsividade em dispositivos móveis
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    // Define o título da página exibido na aba do navegador
     <title>Cadastro de Categorias</title>
-
-    <!-- Link para o arquivo CSS externo para estilização da página -->
+    
+    // Vincula o arquivo de estilo CSS para a formatação da página
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Cabeçalho da página -->
+    // Cabeçalho da página
     <header>
         <div>
-            <h1>Cadastro de Categoria</h1> <!-- Título principal da página -->
-            <a href="index.php" target="_self">Voltar</a> <!-- Link para retornar à página inicial -->
+            // Título principal da página
+            <h1>Cadastro de Categoria</h1>
+            
+            // Link para retornar à página inicial
+            <a href="index.php" target="_self">Voltar</a>
         </div>
     </header>
     
-    <!-- Seção principal da página destinada ao cadastro de categoria -->
+    // Seção principal da página para o formulário de cadastro
     <section id="produtos">
-        <!-- Formulário para inserir uma nova categoria -->
+        // Formulário para inserir uma nova categoria
         <form action="insere-categoria.php" method="post">
-            <!-- Campo de entrada para a descrição da categoria -->
+            // Rótulo para o campo de descrição
             <label for="">Descrição: </label>
+            
+            // Campo de entrada para a descrição da categoria
             <input type="text" name="descricao">
-            <!-- Botão para enviar o formulário -->
+            
+            // Botão para submeter o formulário
             <input type="submit" value="Cadastrar">
         </form>
     </section>
