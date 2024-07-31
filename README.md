@@ -43,17 +43,24 @@ Neste repositório, você encontrará exemplos de como configurar a conexão com
 ### `coneção.php`
 ```php
 <?php
-$servidor = "localhost";
-$usuario = "root";
-$senha = "";
-$dbname = "cadcommerce";
+// Configurações do servidor de banco de dados
+$servidor = "localhost"; // Nome do servidor onde o banco de dados está hospedado
+$usuario = "root";       // Nome de usuário para acessar o banco de dados
+$senha = "";             // Senha do usuário para acessar o banco de dados
+$dbname = "cadcommerce"; // Nome do banco de dados a ser utilizado
 
+// Criação de uma nova conexão MySQLi com o servidor e banco de dados especificados
 $mysqli = new mysqli($servidor, $usuario, $senha, $dbname);
 
-if($mysqli->connect_error) {
+// Verifica se houve algum erro na conexão
+if ($mysqli->connect_error) {
+    // Em caso de erro na conexão, exibe uma mensagem e encerra o script
     die("Falha na conexão: " . $mysqli->connect_error);
 }
+
+// Se a conexão for bem-sucedida, o código continuará a partir daqui
 ?>
+
 ```
 ## Configuração de produto
 ### `produtos_3A.php`
@@ -131,32 +138,43 @@ if($mysqli->connect_error) {
 ## Configuração de marca
 ### `marca.php`
 ```php
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta tags essenciais para a configuração da página -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Define a compatibilidade com o Internet Explorer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a viewport para melhor renderização em dispositivos móveis -->
+
+    <!-- Título da página que aparece na aba do navegador -->
     <title>Cadastro de marca</title>
+
+    <!-- Link para o arquivo CSS externo para estilização da página -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Cabeçalho da página -->
     <header>
         <div>
-            <h1>Cadastro de marca</h1>
-            <a href="index.php" target="_self">Voltar</a>
+            <h1>Cadastro de marca</h1> <!-- Título principal da página -->
+            <a href="index.php" target="_self">Voltar</a> <!-- Link para retornar à página inicial -->
         </div>
     </header>
+    
+    <!-- Seção principal da página destinada ao cadastro de marca -->
     <section id="produtos">
+        <!-- Formulário para inserir uma nova marca -->
         <form action="insere-marca.php" method="post">
+            <!-- Campo de entrada para a descrição da marca -->
             <label for="">Descrição: </label>
             <input type="text" name="descricao">
+            <!-- Botão para enviar o formulário -->
             <input type="submit" value="Cadastrar">
         </form>
     </section>
 </body>
 </html>
+
 ```
 ## Configuração de categoria
 ### `categoria.php`
@@ -165,105 +183,142 @@ if($mysqli->connect_error) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta tags essenciais para a configuração da página -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Define a compatibilidade com o Internet Explorer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a viewport para melhor renderização em dispositivos móveis -->
+
+    <!-- Título da página que aparece na aba do navegador -->
     <title>Cadastro de Categorias</title>
+
+    <!-- Link para o arquivo CSS externo para estilização da página -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Cabeçalho da página -->
     <header>
         <div>
-            <h1>Cadastro de Categoria</h1>
-            <a href="index.php" target="_self">Voltar</a>
+            <h1>Cadastro de Categoria</h1> <!-- Título principal da página -->
+            <a href="index.php" target="_self">Voltar</a> <!-- Link para retornar à página inicial -->
         </div>
     </header>
+    
+    <!-- Seção principal da página destinada ao cadastro de categoria -->
     <section id="produtos">
+        <!-- Formulário para inserir uma nova categoria -->
         <form action="insere-categoria.php" method="post">
+            <!-- Campo de entrada para a descrição da categoria -->
             <label for="">Descrição: </label>
             <input type="text" name="descricao">
+            <!-- Botão para enviar o formulário -->
             <input type="submit" value="Cadastrar">
         </form>
     </section>
 </body>
 </html>
- 
+
 ```
 ## inserindo categorias no banco
 ### `insere_produto.php`
 ```php
 <?php
-     include_once('controller/conexao.php');
-     
-     $categoria      = $_POST['seleciona_categoria'];
-     $marca          = $_POST['seleciona_marca'];
-     $nome_produto   = $_POST['nome'];    
-     $descricao      = $_POST['descricao'];
-     $estoque        = $_POST['estoque'];
-     $preco          = $_POST['preco'];
-    
-     $grava_produto = "INSERT INTO produtos(`IDCATEGORIA`, `IDMARCA`, `NOME`, `DESCRICAO`, `ESTOQUE`, `PRECO`) VALUES (' $categoria ','$marca  ','$nome_produto','$descricao','$estoque','$preco')";
+    // Inclui o arquivo de conexão com o banco de dados
+    include_once('controller/conexao.php');
 
-     $result_gravacao = mysqli_query($mysqli, $grava_produto);
+    // Obtém os dados do formulário via POST
+    $categoria      = $_POST['seleciona_categoria']; // ID da categoria selecionada
+    $marca          = $_POST['seleciona_marca'];   // ID da marca selecionada
+    $nome_produto   = $_POST['nome'];               // Nome do produto
+    $descricao      = $_POST['descricao'];          // Descrição do produto
+    $estoque        = $_POST['estoque'];            // Quantidade em estoque
+    $preco          = $_POST['preco'];              // Preço do produto
 
-     if(mysqli_affected_rows($mysqli) !=0){
-        echo"
-        <META HTTP-EQUIV=REFRESH CONTENT = '0,URL=produtos.php'>
-        <script type=\"text/javascript\">
+    // Prepara a instrução SQL para inserir um novo produto na tabela 'produtos'
+    $grava_produto = "INSERT INTO produtos(`IDCATEGORIA`, `IDMARCA`, `NOME`, `DESCRICAO`, `ESTOQUE`, `PRECO`) 
+    VALUES ('$categoria', '$marca', '$nome_produto', '$descricao', '$estoque', '$preco')";
+
+    // Executa a instrução SQL
+    $result_gravacao = mysqli_query($mysqli, $grava_produto);
+
+    // Verifica se a inserção foi bem-sucedida
+    if (mysqli_affected_rows($mysqli) != 0) {
+        // Se o produto foi cadastrado com sucesso, exibe uma mensagem e redireciona para a página de produtos
+        echo "
+        <META HTTP-EQUIV='REFRESH' CONTENT='0;URL=produtos.php'>
+        <script type='text/javascript'>
         alert('Produto cadastrado com sucesso');
         </script>
         ";
-        
-     }else{
-        echo"
-        <META HTTP-EQUIV=REFRESH CONTENT = '0,URL=produtos.php'>
-        <script type=\"text/javascript\">
+    } else {
+        // Se o produto não foi cadastrado, exibe uma mensagem de erro e redireciona para a página de produtos
+        echo "
+        <META HTTP-EQUIV='REFRESH' CONTENT='0;URL=produtos.php'>
+        <script type='text/javascript'>
         alert('Produto não cadastrado');
         </script>
         ";
-     }
+    }
 ?>
 ```
 ## inserindo marcas no banco
-### `marcas.php`
+### `insere_marca.php`
 ```php
 <?php
-include('controller/conexao.php');
+    // Inclui o arquivo de conexão com o banco de dados
+    include('controller/conexao.php');
 
-$descricao = $_POST['descricao'];
+    // Obtém o valor da descrição enviado pelo método POST
+    $descricao = $_POST['descricao'];
 
-echo "<h3>Descrição: $descricao </h3></br>";
+    // Exibe a descrição recebida do formulário
+    echo "<h3>Descrição: $descricao </h3></br>";
 
-$cad_marca = "INSERT INTO marca(`DESCRICAO`) VALUES ('$descricao')";
+    // Prepara a instrução SQL para inserir uma nova marca na tabela 'marca'
+    $cad_marca = "INSERT INTO marca(`DESCRICAO`) VALUES ('$descricao')";
 
-if(mysqli_query($mysqli, $cad_marca)){
-    echo "<h1>marca cadastrada com sucesso!</h1></br>";
-}else{
-    echo"Erro: ". $cad_marca. "</br>";
-    mysqli_error($mysqli);
+    // Executa a instrução SQL
+    if (mysqli_query($mysqli, $cad_marca)) {
+        // Se a marca for cadastrada com sucesso, exibe uma mensagem de sucesso
+        echo "<h1>Marca cadastrada com sucesso!</h1></br>";
+    } else {
+        // Se ocorrer um erro na execução da consulta, exibe a mensagem de erro
+        echo "Erro: " . $cad_marca . "</br>";
+        echo "Erro SQL: " . mysqli_error($mysqli) . "</br>";
+    }
 
-}mysqli_close($mysqli);
+    // Fecha a conexão com o banco de dados
+    mysqli_close($mysqli);
 ?>
+
 ```
 ## inserindo categorias no banco de dados
-### `categoria.php`
+### `insere_categoria.php`
 ```php
 <?php
-include('controller/conexao.php');
+    // Inclui o arquivo de conexão com o banco de dados
+    include('controller/conexao.php');
 
-$descricao = $_POST['descricao'];
+    // Obtém o valor da descrição enviado pelo método POST
+    $descricao = $_POST['descricao'];
 
-echo "<h3>Descrição: $descricao </h3></br>";
+    // Exibe a descrição recebida do formulário
+    echo "<h3>Descrição: $descricao </h3></br>";
 
-$cad_categoria = "INSERT INTO categoria(`DESCRICAO`) VALUES ('$descricao')";
+    // Prepara a instrução SQL para inserir uma nova categoria na tabela 'categoria'
+    $cad_categoria = "INSERT INTO categoria(`DESCRICAO`) VALUES ('$descricao')";
 
-if(mysqli_query($mysqli, $cad_categoria)){
-    echo "<h1>categoria cadastrada com sucesso!</h1></br>";
-}else{
-    echo"Erro: ". $cad_categoria. "</br>";
-    mysqli_error($mysqli);
+    // Executa a instrução SQL
+    if (mysqli_query($mysqli, $cad_categoria)) {
+        // Se a categoria for cadastrada com sucesso, exibe uma mensagem de sucesso
+        echo "<h1>Categoria cadastrada com sucesso!</h1></br>";
+    } else {
+        // Se ocorrer um erro na execução da consulta, exibe a mensagem de erro
+        echo "Erro: " . $cad_categoria . "</br>";
+        echo "Erro SQL: " . mysqli_error($mysqli) . "</br>";
+    }
 
-}mysqli_close($mysqli);
+    // Fecha a conexão com o banco de dados
+    mysqli_close($mysqli);
 ?>
 
 ```
