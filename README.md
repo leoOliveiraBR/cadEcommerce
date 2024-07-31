@@ -55,6 +55,7 @@ if($mysqli->connect_error) {
 }
 ?>
 ```
+## Configuração de produto
 ###produtos_3A.php
 ```php
 <?php
