@@ -54,8 +54,8 @@ if($mysqli->connect_error) {
     die("Falha na conexão: " . $mysqli->connect_error);
 }
 ?>
-
-###produtos3
+```
+###produtos_3A.php
 ```php
 <?php
     include_once('controller/conexao.php');
@@ -114,4 +114,4 @@ if($mysqli->connect_error) {
         </form>
     </section>
 </body>
-
+```
