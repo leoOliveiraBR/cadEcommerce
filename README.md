@@ -56,7 +56,7 @@ if($mysqli->connect_error) {
 ?>
 ```
 ## Configuração de produto
-###produtos_3A.php
+### `produtos_3A.php`
 ```php
 <?php
     include_once('controller/conexao.php');
