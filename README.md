@@ -12,10 +12,10 @@
 # 💾 Conexão de Banco de Dados
 <img src="img/tabela.png" width="40%">
 
-# ✅ Descrição
+## ✅ Descrição
 Este código foi desenvolvido para demonstrar a configuração e utilização de uma conexão de banco de dados MySQL utilizando PHP. Ele faz parte do projeto CadCommerce.
 
-# 📃 Introdução
+## 📃 Introdução
 Neste repositório, você encontrará exemplos de como configurar a conexão com o banco de dados, criar tabelas, e realizar operações CRUD (Create, Read, Update, Delete) usando PHP e MySQL.
 
 ## 🔧 Funcionalidades
