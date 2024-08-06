@@ -339,5 +339,6 @@ if ($mysqli->connect_error) {
     // Fecha a conexão com o banco de dados
     mysqli_close($mysqli);
 ?>
-
 ```
+## ✒️ Autores
+[Leonardo De Oliveira](https://github.com/leoOliveiraBR)  
